@@ -1,0 +1,14 @@
+credentials.json
+token.json
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+.env
+*.egg-info/
+dist/
+build/
+.claude/
+gtasks_mcp_server/__init__.py
+gtasks_mcp_server/__main__.py

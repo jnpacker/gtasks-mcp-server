@@ -1,0 +1,18 @@
+[project]
+name = "gtasks-mcp-server"
+version = "0.1.0"
+description = "MCP server for Google Tasks API"
+requires-python = ">=3.10"
+dependencies = [
+    "fastmcp>=2.0.0",
+    "google-api-python-client>=2.100.0",
+    "google-auth-oauthlib>=1.2.0",
+    "google-auth-httplib2>=0.2.0",
+]
+
+[project.scripts]
+gtasks-mcp-server = "gtasks_mcp_server.server:mcp.run"
+
+[build-system]
+requires = ["setuptools>=61.0.0"]
+build-backend = "setuptools.build_meta"

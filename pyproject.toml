@@ -6,8 +6,8 @@ requires-python = ">=3.10"
 dependencies = [
     "fastmcp>=3.4.7",
     "google-api-python-client>=2.198.0",
-    "google-auth-oauthlib>=1.2.4",
-    "google-auth-httplib2>=0.3.0",
+    "google-auth-oauthlib>=1.4.0",
+    "google-auth-httplib2>=0.4.1",
 ]
 
 [project.scripts]

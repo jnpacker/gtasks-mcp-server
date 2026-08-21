@@ -9,14 +9,13 @@ import os
 import re
 import sys
 from datetime import datetime, timezone
-from typing import Optional
 
 from fastmcp import FastMCP
-from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
 
 # ---------------------------------------------------------------------------
 # Logging – all output goes to stderr so stdout stays clean for MCP protocol
@@ -245,9 +244,9 @@ def get_lists() -> list[dict]:
 def create_task(
     title: str,
     tasklist_id: str,
-    notes: Optional[str] = None,
-    due_date: Optional[str] = None,
-    parent: Optional[str] = None,
+    notes: str | None = None,
+    due_date: str | None = None,
+    parent: str | None = None,
 ) -> dict:
     """Create a new task (or subtask) in a Google Tasks list.
 
@@ -312,10 +311,8 @@ def list_tasks(
         A list of tasks with id, title, notes, due, status, parent,
         updated, completed, and is_subtask fields.
     """
-    if max_results < 1:
-        max_results = 1
-    if max_results > 100:
-        max_results = 100
+    max_results = max(max_results, 1)
+    max_results = min(max_results, 100)
 
     try:
         service = get_authenticated_service()
@@ -395,7 +392,7 @@ def add_link(
     tasklist_id: str,
     task_id: str,
     url: str,
-    label: Optional[str] = None,
+    label: str | None = None,
 ) -> dict:
     """Add a web link to a task's notes field.
 
